@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/Register.css'; // Importa los estilos CSS
+import '../styles/Register.css'; 
+import { Link } from 'react-router-dom';
 
 function CreateUser() {
     const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ function CreateUser() {
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Evitar que el formulario se envíe automáticamente
+        e.preventDefault(); 
 
         if (!username || !contrasenia) {
             setError("Obligatorio llenar todos los campos");
@@ -21,12 +22,10 @@ function CreateUser() {
         };
 
         try {
-            //console.log(data)
             const res = await axios.post("http://localhost:3000/users", data);
             console.log(res);
             setUsername(""),
             setContrasenia("")
-            // Aquí podrías redirigir a otra página o realizar otras acciones después de crear el post exitosamente
 
         } catch (error) {
             console.log(error);

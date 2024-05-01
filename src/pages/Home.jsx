@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData } from '../api.js'; // Importar la función fetchData
-import '../styles/Home.css'; // Importar los estilos CSS
+import { fetchData } from '../api.js'; 
+import '../styles/Home.css'; 
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [fights, setFights] = useState([]);
@@ -10,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         const fetchFights = async () => {
             try {
-                const data = await fetchData(); // Llamada a la función fetchData
+                const data = await fetchData(); 
                 setFights(data);
                 setLoading(false);
             } catch (error) {
@@ -19,7 +20,7 @@ const Home = () => {
             }
         };
 
-        fetchFights(); // Llamar a fetchFights en useEffect
+        fetchFights(); 
     }, []);
 
     return (
@@ -27,8 +28,9 @@ const Home = () => {
             <div className="home-header">
                 <h1 className="home-title">Peleas de UFC</h1>
                 <div className="home-buttons">
-                    <button className="home-button">Iniciar Sesión</button>
-                    <button className="home-button">Registrarse</button>
+                <Link to="/Login" className="button">Iniciar sesión</Link>
+                <Link to="/Register" className="button">Registrarse</Link>
+
                 </div>
             </div>
             <hr className="home-divider" />

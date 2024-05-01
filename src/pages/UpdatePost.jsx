@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/UpdatePost.css'; // Importa los estilos CSS
+import '../styles/UpdatePost.css'; 
+import { Link } from 'react-router-dom';
 
 function EditPost() {
     const [posts, setPosts] = useState([]);
@@ -15,7 +16,6 @@ function EditPost() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        // Lógica para obtener todos los posts del servidor
         const fetchPosts = async () => {
             try {
                 const response = await axios.get("http://localhost:3000/posts");
@@ -31,11 +31,10 @@ function EditPost() {
 
     const handleEditPost = async (postId) => {
         try {
-            // Lógica para obtener el post específico con el postId proporcionado
             const response = await axios.get(`http://localhost:3000/posts/${postId}`);
             setEditingPostId(postId);
             setEditedPost(response.data);
-            setIsModalOpen(true); // Abre el modal al hacer clic en "Editar"
+            setIsModalOpen(true); 
         } catch (error) {
             setError("Error al editar el post");
             console.log(error);
@@ -65,7 +64,7 @@ function EditPost() {
                 result: '',
                 winnerImageUrl: ''
             });
-            setIsModalOpen(false); // Cierra el modal después de actualizar el post
+            setIsModalOpen(false);
         } catch (error) {
             setError("Error al actualizar el post");
             console.log(error);
@@ -73,7 +72,7 @@ function EditPost() {
     };
 
     const closeModal = () => {
-        setIsModalOpen(false); // Función para cerrar el modal
+        setIsModalOpen(false);
     };
 
     return (
@@ -83,10 +82,10 @@ function EditPost() {
             </div>
             <h1>Blog UFC</h1>
             <div className="button-container">
-                <button className="button">Crear Post</button>
-                <button className="button">Ver Posts</button>
-                <button className="button">Eliminar Post</button>
-                <button className="button">Editar Post</button>
+                <Link to="/CreatePost" className="button">Crear Post</Link>
+                <Link to="/ReadPost" className="button">Ver Post</Link>
+                <Link to="/EliminatePost" className="button">Eliminar Post</Link>
+                <Link to="/UpdatePost" className="button">Editar Post</Link>
             </div>
             <hr />
             <div className="posts-container">

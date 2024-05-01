@@ -11,34 +11,36 @@ function Navegar() {
     return (
         <div>
             <Router>
-                <Routes>
-                    <Route path="/" element={<Layout/>}>
-                        <Route path='home' element={<Home/>}/>
-                        <Route path='CreatePost' element={<CreatePost/>}/>
-                        <Route path='EliminatePost' element={<EliminatePost/>}/>
-                        <Route path='Login' element={<Login/>}/>
-                        <Route path='Register' element={<Register/>}/>
-                        <Route path='ReadPost' element={<ReadPost/>}/>
-                        <Route path='UpdatePost' element={<UpdatePost/>}/>
-                    </Route>
-                </Routes>
+                <Layout />
             </Router>
         </div>
     );
 }
 
 function Layout() {
+    const token = localStorage.getItem('token');
+
     return (
+        
         <>
             <nav>
-                <Link to="/">Home</Link>
-                <Link to="/CreatePost">CreatePost</Link>
-                <Link to="/EliminatePost">EliminatePost</Link>
-                <Link to="/Login">Login</Link>
-                <Link to="/Register">Register</Link>
-                <Link to="/ReadPost">ReadPost</Link>
-                <Link to="/UpdatePost">UpdatePost</Link>
+                <Link to="/"></Link>
+                <Link to="/CreatePost"></Link>
+                <Link to="/EliminatePost"></Link>
+                <Link to="/Login"></Link>
+                <Link to="/Register"></Link>
+                <Link to="/ReadPost"></Link>
+                <Link to="/UpdatePost"></Link>
             </nav>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/CreatePost' element={ token !== null ? <CreatePost /> : <Login/>} /> 
+                <Route path='/EliminatePost' element={ token !== null ? <EliminatePost /> : <Login/>} /> 
+                <Route path='/Login' element={<Login />} />
+                <Route path='/Register' element={<Register />} />
+                <Route path='/ReadPost' element={ token !== null ? <ReadPost /> : <Login/>} /> 
+                <Route path='/UpdatePost' element={ token !== null ? <UpdatePost /> : <Login/>} /> 
+            </Routes>
         </>
     );
 }

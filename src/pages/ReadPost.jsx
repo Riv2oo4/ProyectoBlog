@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/ReadPost.css'; // Importa los estilos CSS
+import '../styles/ReadPost.css'; 
+import { Link } from 'react-router-dom';
 
 function ReadPost() {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        // Lógica para obtener todos los posts del servidor
         const fetchPosts = async () => {
             try {
                 const response = await axios.get("http://localhost:3000/posts");
@@ -28,10 +28,10 @@ function ReadPost() {
             </div>
             <h1>Blog UFC</h1>
             <div className="button-container">
-                <button className="button">Crear Post</button>
-                <button className="button">Ver Posts</button>
-                <button className="button">Eliminar Post</button>
-                <button className="button">Editar Post</button>
+                <Link to="/CreatePost" className="button">Crear Post</Link>
+                <Link to="/ReadPost" className="button">Ver Post</Link>
+                <Link to="/EliminatePost" className="button">Eliminar Post</Link>
+                <Link to="/UpdatePost" className="button">Editar Post</Link>
             </div>
             <hr />
             <div className="posts-container">
