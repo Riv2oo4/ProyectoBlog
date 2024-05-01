@@ -1,0 +1,53 @@
+/* Estilos para el contenedor del navbar */
+.custom-navbar {
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el contenedor de los elementos del navbar */
+.custom-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilos para el botón de hamburguesa en pantallas pequeñas */
+.navbar-toggler {
+    display: none; /* Ocultar el botón en pantallas grandes */
+}
+
+/* Estilos para los enlaces del navbar */
+.navbar-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-links ul li {
+    margin-right: 10px;
+}
+
+.navbar-links ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar-links ul li a.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Estilos para la información del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info span {
+    margin-left: 10px;
+    font-weight: bold;
+}

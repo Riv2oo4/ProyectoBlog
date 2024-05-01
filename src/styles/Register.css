@@ -1,0 +1,49 @@
+.container {
+    max-width: 1000px;
+    width: 90%; /* Ajusta el ancho del contenedor según tus necesidades */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centra vertical y horizontalmente el contenedor */
+}
+
+h1 {
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
