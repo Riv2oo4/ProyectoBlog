@@ -19,9 +19,7 @@ function Navegar() {
 
 function Layout() {
     const token = localStorage.getItem('token');
-
     return (
-        
         <>
             <nav>
                 <Link to="/"></Link>
