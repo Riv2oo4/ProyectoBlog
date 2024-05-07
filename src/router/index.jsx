@@ -1,7 +1,6 @@
 import React from 'react';
 import useToken from '@hooks/useToken';
 import useNavigate from '@hooks/useNavigate';
-import '@styles/index.css'; 
 import Nav from '@components/Nav';
 import Home from '@pages/Home';
 import CreatePost from '@pages/CreatePost';
