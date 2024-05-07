@@ -17,7 +17,6 @@ function CreatePost() {
             return;
         }
 
-        // Obtener el token del almacenamiento local
         const token = localStorage.getItem('token');
 
         const data = {
@@ -44,7 +43,7 @@ function CreatePost() {
     }
 
     return (
-        <div className="container">
+        <div className="create-container">
             <h1>Blog UFC</h1>
             <hr />
             <form onSubmit={handleSubmit}>
