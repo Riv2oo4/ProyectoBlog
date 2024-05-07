@@ -1,11 +1,10 @@
-
-
-.container {
+.create-container {
     max-width: 1000px; /* Ajusta el ancho máximo del contenedor */
     width: 90%; /* Ajusta el ancho del contenedor según tus necesidades */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin: 0 auto; /* Centrado horizontal */
 }
 
 h1 {
