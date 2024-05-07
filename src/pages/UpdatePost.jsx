@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/UpdatePost.css'; 
-import { Link } from 'react-router-dom';
+import '@styles/UpdatePost.css'; 
 
-function EditPost() {
+function UpdatePost() {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
     const [editingPostId, setEditingPostId] = useState(null);
@@ -76,17 +75,9 @@ function EditPost() {
     };
 
     return (
-        <div className="container">
-            <div className="logout-button-container">
-                <button className="logout-button">Cerrar Sesión</button>
-            </div>
+        <div className="update-container">
             <h1>Blog UFC</h1>
-            <div className="button-container">
-                <Link to="/CreatePost" className="button">Crear Post</Link>
-                <Link to="/ReadPost" className="button">Ver Post</Link>
-                <Link to="/EliminatePost" className="button">Eliminar Post</Link>
-                <Link to="/UpdatePost" className="button">Editar Post</Link>
-            </div>
+
             <hr />
             <div className="posts-container">
                 {posts.map(post => (
@@ -135,4 +126,4 @@ function EditPost() {
     );
 }
 
-export default EditPost;
+export default UpdatePost;
