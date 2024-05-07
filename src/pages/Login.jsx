@@ -37,7 +37,7 @@ function Login() {
         return;
       }
 
-      console.log(token);
+     
       localStorage.setItem('token', token);
       setToken(token);
       navigate('/');
