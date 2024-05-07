@@ -1,53 +1,60 @@
-/* Estilos para el contenedor del navbar */
-.custom-navbar {
-    background-color: #f0f0f0;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    position:relative; 
+    width: 100%; 
+    top: 0; 
+    z-index: 1000; 
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
 }
 
-/* Estilos para el contenedor de los elementos del navbar */
-.custom-container {
+.nav-container {
     display: flex;
+    justify-content:flex-end;
     align-items: center;
-    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
 }
 
-/* Estilos para el botón de hamburguesa en pantallas pequeñas */
-.navbar-toggler {
-    display: none; /* Ocultar el botón en pantallas grandes */
-}
-
-/* Estilos para los enlaces del navbar */
-.navbar-links ul {
+.nav {
     list-style-type: none;
+    display: flex;
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
-.navbar-links ul li {
-    margin-right: 10px;
+.nav-item {
+    margin-right: 20px;
 }
 
-.navbar-links ul li a {
+.nav-link {
+    color: #fff;
     text-decoration: none;
-    color: #333;
-    padding: 5px 10px;
+    padding: 10px;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #555;
     border-radius: 5px;
 }
 
-.navbar-links ul li a.active {
-    background-color: #007bff;
+.btn-login {
+    background-color: red;
     color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
-/* Estilos para la información del usuario */
-.user-info {
-    display: flex;
-    align-items: center;
+.btn-login:hover {
+    background-color: darkred;
 }
 
-.user-info span {
-    margin-left: 10px;
-    font-weight: bold;
-}
