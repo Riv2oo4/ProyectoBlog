@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/DeletePost.css'; 
-import { Link } from 'react-router-dom';
+import '@styles/DeletePost.css'; 
 
 
 function EliminatePost() {
@@ -34,18 +33,10 @@ function EliminatePost() {
     };
 
     return (
-        <div className="container">
+        <div className="eliminate-container">
             <div className="header-container">
-                <div className="logout-button-container">
-                    <button className="logout-button">Cerrar Sesión</button>
-                </div>
                 <h1>Blog UFC</h1>
-                <div className="button-container">
-                    <Link to="/CreatePost" className="button">Crear Post</Link>
-                    <Link to="/ReadPost" className="button">Ver Post</Link>
-                    <Link to="/EliminatePost" className="button">Eliminar Post</Link>
-                    <Link to="/UpdatePost" className="button">Editar Post</Link>
-                </div>
+
             </div>
             <hr />
             <div className="posts-container">
