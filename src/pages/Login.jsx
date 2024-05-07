@@ -1,15 +1,16 @@
-import  { useState } from 'react';
-import '@styles/Login.css'; // Importa los estilos CSS
+import { useState } from 'react';
+import '@styles/Login.css'; 
 import useToken from '@hooks/useToken';
 import useNavigate from "@hooks/useNavigate";
+import { parseToken } from '@components/tokenUtils';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [contrasenia, setContrasenia] = useState('');
   const [error, setError] = useState('');
-  const {setToken} = useToken()
-  const {navigate}= useNavigate()
-  
+  const { setToken } = useToken();
+  const { navigate } = useNavigate();
+
   const handleLogin = async () => {
     try {
       const response = await fetch('http://localhost:3000/log', {
@@ -19,49 +20,48 @@ function Login() {
         },
         body: JSON.stringify({ username, contrasenia }),
       });
-  
-      // Verifica si la respuesta es exitosa
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error);
       }
-  
-      // Si la respuesta es exitosa, obtén el token directamente de la respuesta JSON
-      const responseData = await response.json(); 
-      const token = responseData.token; 
-  
-      console.log('token',token)
+
+      const responseData = await response.json();
+      const token = responseData.token;
+
+      const tokenInfo = parseToken(token);
+
+      if (tokenInfo.exp * 1000 < Date.now()) {
+        console.log("Token expirado")
+        navigate('/login');
+        return;
+      }
+
+      console.log(token);
       localStorage.setItem('token', token);
-     
-      console.log(localStorage.getItem('token'));
-      setToken(token)
-      navigate('/')
+      setToken(token);
+      navigate('/');
       console.log('Inicio de sesión exitoso');
-      window.location.replace("#/");
-  
+
     } catch (error) {
       setError(error.message);
     }
   };
-  
-  
 
   return (
-
-    <div className="login-container"> {/* Aplica los estilos del contenedor */}
+    <div className="login-container"> 
       <h2>Iniciar Sesión</h2>
-      {error && <div className="error">{error}</div>} {/* Aplica los estilos de error */}
-      <div className="form-group"> {/* Aplica los estilos del grupo de formulario */}
+      {error && <div className="error">{error}</div>} 
+      <div className="form-group"> 
         <label>Nombre de Usuario:</label>
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
       </div>
-      <div className="form-group"> {/* Aplica los estilos del grupo de formulario */}
+      <div className="form-group"> 
         <label>Contraseña:</label>
         <input type="password" value={contrasenia} onChange={(e) => setContrasenia(e.target.value)} />
       </div>
-      <button className="form-group button" onClick={handleLogin}>Iniciar Sesión</button> {/* Aplica los estilos del botón */}
+      <button className="form-group button" onClick={handleLogin}>Iniciar Sesión</button> 
     </div>
-
   );
 }
 
