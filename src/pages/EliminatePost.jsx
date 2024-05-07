@@ -9,7 +9,7 @@ function EliminatePost() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/posts");
+                const response = await axios.get("http://localhost:225000/posts");
                 setPosts(response.data);
             } catch (error) {
                 setError("Error al obtener los posts");
@@ -24,7 +24,7 @@ function EliminatePost() {
         try {
             const token = localStorage.getItem('token');
 
-            await axios.delete(`http://localhost:3000/posts/${postId}`, {
+            await axios.delete(`http://localhost:225000/posts/${postId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
