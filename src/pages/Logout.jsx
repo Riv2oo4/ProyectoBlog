@@ -10,9 +10,9 @@ const Logout = () => {
         setTimeout(() => {
             navigate('/');
         }, 1000);
-    }, [navigate]); // Agrega navigate al arreglo de dependencias
+    }, [navigate]); 
 
-    return <h1>Saliendo 👋🏽</h1>;
+    return <h1>Saliendo</h1>;
 };
 
 export default Logout;
