@@ -2,7 +2,6 @@ import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import '@styles/DeletePost.css'; 
 
-
 function EliminatePost() {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
@@ -23,7 +22,14 @@ function EliminatePost() {
 
     const handleDeletePost = async (postId) => {
         try {
-            await axios.delete(`http://localhost:3000/posts/${postId}`);
+            // Obtener el token del almacenamiento local
+            const token = localStorage.getItem('token');
+
+            await axios.delete(`http://localhost:3000/posts/${postId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const updatedPosts = posts.filter(post => post.id !== postId);
             setPosts(updatedPosts);
         } catch (error) {
@@ -36,7 +42,6 @@ function EliminatePost() {
         <div className="eliminate-container">
             <div className="header-container">
                 <h1>Blog UFC</h1>
-
             </div>
             <hr />
             <div className="posts-container">
@@ -56,8 +61,6 @@ function EliminatePost() {
             {error && <div className="error">{error}</div>}
         </div>
     );
-    
-    
 }
 
 export default EliminatePost;
