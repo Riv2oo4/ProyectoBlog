@@ -1,18 +1,18 @@
-.container {
+.register-container {
     max-width: 1000px;
-    width: 90%; /* Ajusta el ancho del contenedor según tus necesidades */
-    margin: auto; /* Centra el contenedor horizontalmente */
+    width: 90%; 
+    margin: auto; 
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 10px;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%); /* Centra vertical y horizontalmente el contenedor */
+    transform: translate(-50%, -50%); /
 }
 
 h1 {
-    text-align: center; /* Centra el texto horizontalmente */
+    text-align: center; 
 }
 
 .form-group {
