@@ -1,7 +1,6 @@
 import  { useState } from 'react';
 import axios from 'axios';
-import '../styles/CreatePost.css'; 
-
+import '@styles/CreatePost.css'; 
 
 function CreatePost() {
     const [title, setTitle] = useState('');
@@ -18,6 +17,9 @@ function CreatePost() {
             return;
         }
 
+        // Obtener el token del almacenamiento local
+        const token = localStorage.getItem('token');
+
         const data = {
             title: title,
             content: content,
@@ -26,13 +28,16 @@ function CreatePost() {
         };
 
         try {
-            console.log(data)
-            const res = await axios.post("http://localhost:3000/posts", data);
+            const res = await axios.post("http://localhost:3000/posts", data, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             console.log(res);
-            setTitle(""),
-            setContent(""),
-            setResult(""),
-            setWinnerImageUrl("")
+            setTitle("");
+            setContent("");
+            setResult("");
+            setWinnerImageUrl("");
         } catch (error) {
             console.log(error);
         }
@@ -60,7 +65,7 @@ function CreatePost() {
                     <input type="text" id="winnerImageUrl" value={winnerImageUrl} onChange={(e) => setWinnerImageUrl(e.target.value)} />
                 </div>
                 {error && <div className="error">{error}</div>}
-                <button className = "button" type="submit">Crear Post</button>
+                <button className="button" type="submit">Crear Post</button>
             </form>
         </div>
     );
