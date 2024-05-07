@@ -36,9 +36,11 @@ const Nav = () => {
                         </>
                     )}
                     {!isLoggedIn && (
-                        <li className="nav-item">
+                        <><li className="nav-item">
                             <a className={page === "/login" ? "nav-link active" : "nav-link"} href="" onClick={() => navigate('/login')}>Iniciar Sesión</a>
-                        </li>
+                        </li><li className="nav-item">
+                                <a className={page === "/register" ? "nav-link active" : "nav-link"} href="" onClick={() => navigate('/register')}>Registrarse</a>
+                            </li></>
                     )}
                     {isLoggedIn && (
                         <li className="nav-item">
