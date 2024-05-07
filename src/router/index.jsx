@@ -1,46 +1,58 @@
-import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
-import Home from '/src/pages/Home.jsx';
-import CreatePost from '/src/pages/CreatePost';
-import EliminatePost from "/src/pages/EliminatePost.jsx";
-import Login from "/src/pages/Login.jsx";
-import Register from "/src/pages/Register.jsx";
-import ReadPost from "/src/pages/ReadPost.jsx";
-import UpdatePost from "/src/pages/UpdatePost.jsx";
+import React from 'react';
+import useToken from '@hooks/useToken';
+import useNavigate from '@hooks/useNavigate';
+import '@styles/index.css'; 
+import Nav from '@components/Nav';
+import Home from '@pages/Home';
+import CreatePost from '@pages/CreatePost';
+import EliminatePost from "@pages/EliminatePost";
+import Login from "@pages/Login";
+import Register from "@pages/Register";
+import ReadPost from "@pages/ReadPost";
+import UpdatePost from "@pages/UpdatePost";
+import Logout from "@pages/Logout";
 
-function Navegar() {
+const routes = {
+    '/': { component: Home, requiresAuth: false },
+    '/register': { component: Register, requiresAuth: false },
+    '/CreatePost': { component: CreatePost, requiresAuth: true },
+    '/ReadPost': { component: ReadPost, requiresAuth: false },
+    '/UpdatePost': { component: UpdatePost, requiresAuth: true },
+    '/EliminatePost': { component: EliminatePost, requiresAuth: true },
+    '/login': { component: Login, requiresAuth: false },
+    '/logout': { component: Logout, requiresAuth: false },
+}
+
+const Router = () => {
+    const { token } = useToken();
+    const { page } = useNavigate();
+
+    let CurrentPage = () => <h1>404 Página no encontrada</h1>;
+
+    if (routes[page]) {
+        if (routes[page].requiresAuth && !token) {
+            CurrentPage = Login;
+        } else {
+            CurrentPage = routes[page].component;
+        }
+    }
+
+    if (page === "/logout") {
+        window.location.replace("/");
+    }
+
     return (
         <div>
-            <Router>
-                <Layout />
-            </Router>
+            <Nav />
+            <div className="main-container">
+                <div className="content-container">
+                    <div className="current-page-container">
+                        <CurrentPage />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
 
-function Layout() {
-    const token = localStorage.getItem('token');
-    return (
-        <>
-            <nav>
-                <Link to="/"></Link>
-                <Link to="/CreatePost"></Link>
-                <Link to="/EliminatePost"></Link>
-                <Link to="/Login"></Link>
-                <Link to="/Register"></Link>
-                <Link to="/ReadPost"></Link>
-                <Link to="/UpdatePost"></Link>
-            </nav>
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/CreatePost' element={ token !== null ? <CreatePost /> : <Login/>} /> 
-                <Route path='/EliminatePost' element={ token !== null ? <EliminatePost /> : <Login/>} /> 
-                <Route path='/Login' element={<Login />} />
-                <Route path='/Register' element={<Register />} />
-                <Route path='/ReadPost' element={ token !== null ? <ReadPost /> : <Login/>} /> 
-                <Route path='/UpdatePost' element={ token !== null ? <UpdatePost /> : <Login/>} /> 
-            </Routes>
-        </>
-    );
-}
-
-export default Navegar;
+export default Router;
