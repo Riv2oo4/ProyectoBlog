@@ -22,7 +22,6 @@ function EliminatePost() {
 
     const handleDeletePost = async (postId) => {
         try {
-            // Obtener el token del almacenamiento local
             const token = localStorage.getItem('token');
 
             await axios.delete(`http://localhost:3000/posts/${postId}`, {
