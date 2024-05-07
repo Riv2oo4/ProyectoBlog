@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 import '../styles/CreatePost.css'; 
-import { Link } from 'react-router-dom';
 
 
 function CreatePost() {
@@ -42,12 +41,6 @@ function CreatePost() {
     return (
         <div className="container">
             <h1>Blog UFC</h1>
-            <div className="button-container">
-                <Link to="/CreatePost" className="button">Crear Post</Link>
-                <Link to="/ReadPost" className="button">Ver Post</Link>
-                <Link to="/EliminatePost" className="button">Eliminar Post</Link>
-                <Link to="/UpdatePost" className="button">Editar Post</Link>
-            </div>
             <hr />
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
