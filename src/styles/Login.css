@@ -1,18 +1,18 @@
-.container {
+.login-container {
     max-width: 1000px;
-    width: 90%; /* Cambia el ancho del contenedor según tus necesidades */
-    margin: auto; /* Hace que el contenedor se centre horizontalmente */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Centra vertical y horizontalmente el contenedor */
+    width: 90%; 
+    margin: auto; 
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
 }
 
-h2 {
-    text-align: center; /* Centra el texto horizontalmente */
+h1 {
+    text-align: center; 
 }
 
 .form-group {
