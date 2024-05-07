@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
-import '../styles/Register.css'; 
-import { Link } from 'react-router-dom';
+import '@styles/Register.css'; 
 
-function CreateUser() {
+function Register() {
     const [username, setUsername] = useState('');
     const [contrasenia, setContrasenia] = useState('');
     const [error, setError] = useState('');
@@ -33,7 +32,7 @@ function CreateUser() {
     }
 
     return (
-        <div className="container">
+        <div className="register-container">
             <h1>Registro</h1>
             {error && <div className="error">{error}</div>}
             <form onSubmit={handleSubmit}>
@@ -53,4 +52,4 @@ function CreateUser() {
     );
 }
 
-export default CreateUser;
+export default Register;
