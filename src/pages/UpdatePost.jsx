@@ -17,7 +17,6 @@ function UpdatePost() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                // Obtener el token del almacenamiento local
                 const token = localStorage.getItem('token');
 
                 const response = await axios.get("http://localhost:3000/posts", {
@@ -37,7 +36,6 @@ function UpdatePost() {
 
     const handleEditPost = async (postId) => {
         try {
-            // Obtener el token del almacenamiento local
             const token = localStorage.getItem('token');
 
             const response = await axios.get(`http://localhost:3000/posts/${postId}`, {
