@@ -1,4 +1,3 @@
-import React from 'react';
 import useToken from '@hooks/useToken';
 import useNavigate from '@hooks/useNavigate';
 import Nav from '@components/Nav';
