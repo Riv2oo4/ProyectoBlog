@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import '../styles/Login.css'; // Importa los estilos CSS
-import { Link } from 'react-router-dom';
+import  { useState } from 'react';
+import '@styles/Login.css'; // Importa los estilos CSS
+import useToken from '@hooks/useToken';
+import useNavigate from "@hooks/useNavigate";
 
 function Login() {
   const [username, setUsername] = useState('');
   const [contrasenia, setContrasenia] = useState('');
   const [error, setError] = useState('');
+  const {setToken} = useToken()
+  const {navigate}= useNavigate()
   
   const handleLogin = async () => {
     try {
@@ -16,29 +19,36 @@ function Login() {
         },
         body: JSON.stringify({ username, contrasenia }),
       });
-      setContrasenia("")
-      setUsername("")
-      
+  
+      // Verifica si la respuesta es exitosa
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error);
       }
-      
+  
+      // Si la respuesta es exitosa, obtén el token directamente de la respuesta JSON
       const responseData = await response.json(); 
       const token = responseData.token; 
   
+      console.log('token',token)
       localStorage.setItem('token', token);
+     
       console.log(localStorage.getItem('token'));
-
+      setToken(token)
+      navigate('/')
       console.log('Inicio de sesión exitoso');
+      window.location.replace("#/");
+  
     } catch (error) {
       setError(error.message);
     }
   };
   
+  
 
   return (
-    <div className="container"> {/* Aplica los estilos del contenedor */}
+
+    <div className="login-container"> {/* Aplica los estilos del contenedor */}
       <h2>Iniciar Sesión</h2>
       {error && <div className="error">{error}</div>} {/* Aplica los estilos de error */}
       <div className="form-group"> {/* Aplica los estilos del grupo de formulario */}
@@ -51,6 +61,7 @@ function Login() {
       </div>
       <button className="form-group button" onClick={handleLogin}>Iniciar Sesión</button> {/* Aplica los estilos del botón */}
     </div>
+
   );
 }
 
