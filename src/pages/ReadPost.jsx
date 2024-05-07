@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '@styles/ReadPost.css'; 
 
@@ -9,7 +9,14 @@ function ReadPost() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/posts");
+                // Obtener el token del almacenamiento local
+                const token = localStorage.getItem('token');
+
+                const response = await axios.get("http://localhost:3000/posts", {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 setPosts(response.data);
             } catch (error) {
                 setError("Error al obtener los posts");
@@ -22,9 +29,7 @@ function ReadPost() {
 
     return (
         <div className="read-container">
-
             <h1>Blog UFC</h1>
-
             <hr />
             <div className="posts-container">
                 {posts.map(post => (
