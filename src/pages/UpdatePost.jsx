@@ -19,7 +19,7 @@ function UpdatePost() {
             try {
                 const token = localStorage.getItem('token');
 
-                const response = await axios.get("http://localhost:225000/posts", {
+                const response = await axios.get("http://localhost:3000/posts", {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -38,7 +38,7 @@ function UpdatePost() {
         try {
             const token = localStorage.getItem('token');
 
-            const response = await axios.get(`http://localhost:225000/posts/${postId}`, {
+            const response = await axios.get(`http://localhost:3000/posts/${postId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -62,7 +62,7 @@ function UpdatePost() {
             // Obtener el token del almacenamiento local
             const token = localStorage.getItem('token');
 
-            await axios.put(`http://localhost:225000/posts/${editingPostId}`, editedPost, {
+            await axios.put(`http://localhost:3000/posts/${editingPostId}`, editedPost, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
