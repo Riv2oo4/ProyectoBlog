@@ -14,7 +14,6 @@ Este repositorio contiene el código fuente para un proyecto de creación de un 
 
 - **Express**: Se eligió Express.js para el desarrollo del backend debido a su facilidad de uso, su capacidad para crear rápidamente APIs RESTful y su gran comunidad de usuarios y recursos disponibles.
 
-- **Next.js**: Next.js se seleccionó como un marco de trabajo para React para el backend debido a su enfoque en la renderización del lado del servidor (SSR) y la generación de sitios estáticos, lo que proporciona un rendimiento óptimo y una experiencia de usuario mejorada.
 
 ## Estructura del Proyecto
 
