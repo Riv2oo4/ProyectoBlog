@@ -1,18 +1,23 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
 # Blog Project
 
 Este repositorio contiene el código fuente para un proyecto de creación de un blog, que ha sido dividido en varias etapas. El laboratorio 6 se enfoca en el desarrollo del backend, el cual incluye un Dockerfile que permite levantar una API para obtener posts, realizar operaciones CRUD, iniciar sesión, registrarse, entre otras funcionalidades.
 
 ## Tecnologías Utilizadas y Razones de Elección
 
-- **React**: Se eligió React debido a su popularidad, su eficiencia en la creación de interfaces de usuario dinámicas y su gran ecosistema de bibliotecas y herramientas complementarias.
+- **React**: Se eligió React debido a su popularidad, su eficiencia en la creación de interfaces de usuario dinámicas y su gran ecosistema de bibliotecas y herramientas complementarias. <span class="fab fa-react"></span>
   
-- **JavaScript**: Como lenguaje de programación principal para el desarrollo frontend y backend debido a su amplia adopción y versatilidad.
+- **JavaScript**: Como lenguaje de programación principal para el desarrollo frontend y backend debido a su amplia adopción y versatilidad. <span class="fab fa-js"></span>
 
 - **Vite**: Se optó por Vite como un entorno de desarrollo rápido para proyectos de React debido a su rendimiento superior en comparación con otras herramientas de construcción, como Webpack o Parcel.
 
 - **CSS**: Para estilizar la interfaz de usuario. Se utiliza CSS debido a su simplicidad y su amplio soporte en navegadores web.
 
-- **Express**: Se eligió Express.js para el desarrollo del backend debido a su facilidad de uso, su capacidad para crear rápidamente APIs RESTful y su gran comunidad de usuarios y recursos disponibles.
+- **Express**: Se eligió Express.js para el desarrollo del backend debido a su facilidad de uso, su capacidad para crear rápidamente APIs RESTful y su gran comunidad de usuarios y recursos disponibles. <i class="fab fa-node-js"></i>
+
 
 
 ## Estructura del Proyecto
