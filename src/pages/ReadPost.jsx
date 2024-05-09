@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import '@styles/ReadPost.css'; 
+import '@styles/ReadPost.css';
 
 function ReadPost() {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState('');
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -26,6 +28,11 @@ function ReadPost() {
         fetchPosts();
     }, []);
 
+    const openModal = (content) => {
+        setModalContent(content);
+        setModalOpen(true);
+    };
+
     return (
         <div className="read-container">
             <h1>Blog UFC</h1>
@@ -38,12 +45,25 @@ function ReadPost() {
                         </div>
                         <div className="post-details">
                             <h2>{post.title}</h2>
-                            <p>{post.content}</p>
+                            <p className="post-content">
+                                {post.content.length > 24 ? post.content.slice(0, 24) + '...' : post.content}
+                                {post.content.length > 24 && (
+                                    <button onClick={() => openModal(post.content)}>Ver más</button>
+                                )}
+                            </p>
                         </div>
                     </div>
                 ))}
             </div>
             {error && <div className="error">{error}</div>}
+            {modalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={() => setModalOpen(false)}>&times;</span>
+                        <p>{modalContent}</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
