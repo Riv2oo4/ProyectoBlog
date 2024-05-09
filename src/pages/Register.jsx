@@ -21,7 +21,7 @@ function Register() {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/users", data);
+            const res = await axios.post("http://22500.arpanetos.lol/users", data);
             console.log(res);
             setUsername(""),
             setContrasenia("")
