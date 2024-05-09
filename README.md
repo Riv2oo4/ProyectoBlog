@@ -17,7 +17,7 @@ Este repositorio contiene el código fuente para un proyecto de creación de un 
 
 ## Estructura del Proyecto
 
-El proyecto está organizado en varias partes, con el laboratorio 6 centrado en el desarrollo del backend utilizando Express y Next.js.
+El proyecto está organizado en varias partes, con el laboratorio 6 centrado en el desarrollo del backend utilizando Expres.
 
 ## Instalación
 
@@ -49,7 +49,7 @@ Una vez que el contenedor Docker esté en funcionamiento, podrás realizar solic
 
 
 
-¡Gracias por tu interés en nuestro proyecto! Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.
+¡Gracias por tu interés en mi proyecto! 
 
 
 ## Autores ✒️
