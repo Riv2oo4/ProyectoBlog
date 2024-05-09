@@ -37,25 +37,38 @@ function UpdatePost() {
     const handleEditPost = async (postId) => {
         try {
             const token = localStorage.getItem('token');
-
             const response = await axios.get(`http://localhost:3000/posts/${postId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
             setEditingPostId(postId);
-            setEditedPost(response.data);
+            setEditedPost(prevState => ({
+                ...response.data,
+                winnerImageUrl: prevState.winnerImageUrl
+            }));
             setIsModalOpen(true); 
         } catch (error) {
             setError("Error al editar el post");
             console.log(error);
         }
     };
+    
 
+    const handleEditField = (fieldName, value) => {
+        setEditedPost(prevState => ({
+            ...prevState,
+            [fieldName]: value
+        }));
+    };
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditedPost({ ...editedPost, [name]: value });
+        handleEditField(name, value);
     };
+    
+    
+    
 
     const handleUpdatePost = async () => {
         try {
