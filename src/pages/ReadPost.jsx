@@ -13,7 +13,7 @@ function ReadPost() {
             try {
                 const token = localStorage.getItem('token');
 
-                const response = await axios.get("http://localhost:3000/posts", {
+                const response = await axios.get("http://22500.arpanetos.lol/posts", {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
